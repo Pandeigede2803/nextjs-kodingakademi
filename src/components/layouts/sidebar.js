@@ -11,7 +11,7 @@ const Sidebar = () => {
       {showSidebar && (
         <div className="h-full w-72 bg-white shadow-xl">
           <div onClick={() => route.push("/")} className="w-full cursor-pointer px-5 py-5 flex justify-center select-none">
-            <p className="text-xl">Yepposkin - Admin</p>
+            <p className="text-xl">Dashboard - Admin</p>
           </div>
           <div className="w-full px-5">
             <div

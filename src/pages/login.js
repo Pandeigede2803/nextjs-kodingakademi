@@ -27,29 +27,16 @@ const Login = () => {
     dispatch(insertToken(token));
     localStorage.setItem("token", token);
     route.push("/");
-
-    // setDisabled(true);
-    // fetchApiLogin(params, (res) => {
-    //   setDisabled(false);
-    //   if (res.hasOwnProperty("resVal")) {
-    //     let token = tokenEncrypt(res.resVal.token);
-    //     dispatch(insertToken(token));
-    //     localStorage.setItem("token", token);
-    //     route.push("/");
-    //   } else {
-    //     toast.error(res);
-    //   }
-    // });
   };
 
   return (
     <>
       <Head>
-        <title>Yepposkin | Admin - Login</title>
+        <title>Dashboard | Admin - Login</title>
       </Head>
       <div className="bg-bg-gray flex h-screen items-center justify-center w-full animate-fade-in-left">
         <div className="flex flex-col bg-white items-center px-10 py-6 rounded-lg space-y-3 border-2 border-bg-primary">
-          <p className="text-4xl font-bold text-bg-primary">Yepposkin Platform Admin</p>
+          <p className="text-4xl font-bold text-bg-primary">Platform Admin</p>
           <div className="w-full border-t border-gray-400"></div>
           <p className="text-bg-primary font-medium text-4xl">Sign In</p>
           <form
