@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import useAuthToken from "src/zustand/authToken";
 
 const Auth = ({ children }) => {
   const route = useRouter();
   const currentRoute = route.pathname;
-  const token = useSelector((state) => state.authToken.token);
+  const { token } = useAuthToken((state) => state);
 
   useEffect(() => {
     let userToken = localStorage.getItem("token") || token;

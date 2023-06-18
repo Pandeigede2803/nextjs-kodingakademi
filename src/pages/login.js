@@ -1,18 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import Image from "next/image";
 import Head from "next/head";
-import Logo from "../../public/images/logo.png";
-import { fetchApiLogin } from "../helper/fetchApi/auth";
-import { useDispatch } from "react-redux";
-import { insertToken } from "../redux/reducers/authToken";
-import { tokenEncrypt } from "../helper/tokenHash";
 import { toast } from "react-toastify";
+import useAuthToken from "src/zustand/authToken";
 
 const Login = () => {
   const route = useRouter();
-  const dispatch = useDispatch();
+  const { setToken } = useAuthToken((state) => state);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -23,8 +18,8 @@ const Login = () => {
       password: password,
     };
 
-    let token = tokenEncrypt("dasdada");
-    dispatch(insertToken(token));
+    let token = "dasdada";
+    setToken(token);
     localStorage.setItem("token", token);
     route.push("/");
   };

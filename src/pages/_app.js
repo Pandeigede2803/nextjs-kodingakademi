@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Auth from "../components/master/auth";
-import { store } from "../redux/store/store";
-import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   const route = useRouter();
@@ -31,7 +29,7 @@ function MyApp({ Component, pageProps }) {
     }
   };
 
-  return <Provider store={store}>{masterLayout()}</Provider>;
+  return masterLayout();
 }
 
 export default MyApp;

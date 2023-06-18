@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <div className="w-full">
-        <p>content</p>
+        <p>home page content</p>
       </div>
     </>
   );

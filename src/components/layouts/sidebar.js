@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import useToggleSidebar from "src/zustand/toggleSidebar";
 
 const Sidebar = () => {
   const route = useRouter();
-  const showSidebar = useSelector((state) => state.toggleSidebar.showSidebar);
+  const { showSidebar } = useToggleSidebar((state) => state);
 
   return (
     <>
@@ -15,10 +15,18 @@ const Sidebar = () => {
           </div>
           <div className="w-full px-5">
             <div
-              onClick={() => route.push("/products")}
+              onClick={() => route.push("/students")}
               className="py-2 px-3 my-3 cursor-pointer items-center rounded-md bg-slate-100 hover:bg-gray-200"
             >
-              <p>Product</p>
+              <p>Students</p>
+            </div>
+          </div>
+          <div className="w-full px-5">
+            <div
+              onClick={() => route.push("/classes")}
+              className="py-2 px-3 my-3 cursor-pointer items-center rounded-md bg-slate-100 hover:bg-gray-200"
+            >
+              <p>Class</p>
             </div>
           </div>
         </div>
