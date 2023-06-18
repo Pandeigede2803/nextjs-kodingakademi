@@ -3,24 +3,14 @@ import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Head from "next/head";
 import { toast } from "react-toastify";
-import useAuthToken from "src/zustand/authToken";
 
 const Login = () => {
   const route = useRouter();
-  const { setToken } = useAuthToken((state) => state);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
 
   const doLogin = () => {
-    let params = {
-      email: email,
-      password: password,
-    };
-
-    let token = "dasdada";
-    setToken(token);
-    localStorage.setItem("token", token);
     route.push("/");
   };
 

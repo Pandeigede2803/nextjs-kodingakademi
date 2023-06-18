@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   const route = useRouter();
   const currentRoute = route.pathname;
 
-  let authRoute = ["/login", "/register"];
+  let authRoute = ["/login"];
 
   const masterLayout = () => {
     if (authRoute.includes(currentRoute)) {
