@@ -9,9 +9,6 @@ const Navbar = () => {
   const { showSidebar, setShowSidebar } = useToggleSidebar((state) => state);
 
   const doLogout = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-    setUserData(null);
     route.push("/login");
   };
 
