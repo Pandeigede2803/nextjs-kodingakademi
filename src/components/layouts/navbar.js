@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useToggleSidebar from "src/zustand/toggleSidebar";
 
 const Navbar = () => {
   const route = useRouter();
   const [showProfile, setShowProfile] = useState(false);
+  const { showSidebar, setShowSidebar } = useToggleSidebar((state) => state);
 
   const doLogout = () => {
     localStorage.removeItem("token");
@@ -16,7 +18,7 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full flex justify-between items-center shadow-md py-3 px-3 sticky top-0 z-10 bg-white">
-        <div className="cursor-pointer">
+        <div onClick={() => setShowSidebar(!showSidebar)} className="cursor-pointer">
           <GiHamburgerMenu size={25} />
         </div>
         <div className="flex items-center space-x-2 mr-2">
