@@ -9,27 +9,30 @@ function MyApp({ Component, pageProps }) {
   const route = useRouter();
   const currentRoute = route.pathname;
 
-  let authRoute = ["/login"];
+  let authRoute = ["/login", "/register"];
 
   const masterLayout = () => {
     if (authRoute.includes(currentRoute)) {
       return (
         <Auth>
-          <ToastContainer />
           <Component {...pageProps} />
         </Auth>
       );
     } else {
       return (
         <Dashboard>
-          <ToastContainer />
           <Component {...pageProps} />
         </Dashboard>
       );
     }
   };
 
-  return masterLayout();
+  return (
+    <div>
+      <ToastContainer />
+      {masterLayout()}
+    </div>
+  );
 }
 
 export default MyApp;

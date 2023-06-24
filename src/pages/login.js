@@ -1,18 +1,12 @@
-import { useRouter } from "next/router";
 import React, { useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
+// import CircularProgress from "@mui/material/CircularProgress";
 import Head from "next/head";
-import { toast } from "react-toastify";
-
+import { useRouter } from "next/router";
 const Login = () => {
   const route = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
-
-  const doLogin = () => {
-    route.push("/");
-  };
 
   return (
     <>
@@ -27,7 +21,8 @@ const Login = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              doLogin();
+              setDisabled(true);
+              route.push("/");
             }}
             className="flex flex-col items-center w-full pb-3"
           >
@@ -51,20 +46,25 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="mt-5 w-full flex justify-end">
-              {/* <p className="text-bg-primary text-base">
-                Don't have an account?{" "}
-                <span onClick={() => route.push("/register")} className="font-medium cursor-pointer hover:underline">
-                  Register
-                </span>
-              </p> */}
-            </div>
+            <div className="mt-5 w-full flex justify-end"></div>
             <button
-              type="submit"
+              type="button"
               className={"bg-bg-primary py-2 rounded-md text-white w-full flex justify-center mt-10 " + (!disabled && "hover:bg-bg-primary-darker")}
               disabled={disabled}
             >
-              {!disabled ? "Sign In" : <CircularProgress size={24} color="inherit" />}
+              Sign In
+            </button>
+            <button
+              type="submit"
+              className={"bg-[#4285f4] py-2 rounded-md text-white w-full flex justify-center items-center mt-5 " + (!disabled && "hover:opacity-80")}
+              disabled={disabled}
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/706px-Google_%22G%22_Logo.svg.png"
+                alt="google"
+                className="w-5 h-5 mr-2 bg-white rounded-sm"
+              />
+              Google
             </button>
           </form>
         </div>

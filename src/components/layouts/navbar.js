@@ -1,12 +1,10 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import useToggleSidebar from "src/zustand/toggleSidebar";
 
 const Navbar = () => {
   const route = useRouter();
   const [showProfile, setShowProfile] = useState(false);
-  const { showSidebar, setShowSidebar } = useToggleSidebar((state) => state);
 
   const doLogout = () => {
     route.push("/login");
@@ -15,11 +13,11 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full flex justify-between items-center shadow-md py-3 px-3 sticky top-0 z-10 bg-white">
-        <div onClick={() => setShowSidebar(!showSidebar)} className="cursor-pointer">
+        <div className="cursor-pointer">
           <GiHamburgerMenu size={25} />
         </div>
         <div className="flex items-center space-x-2 mr-2">
-          <p>admin@email.com</p>
+          <p>email@google.com</p>
           <div className="relative">
             <div
               onClick={() => setShowProfile(!showProfile)}
@@ -28,11 +26,12 @@ const Navbar = () => {
               <p className="text-white">A</p>
             </div>
             {showProfile && (
-              <div className="absolute right-2">
-                <div className="bg-white shadow-xl w-32 rounded-md py-1 px-2">
-                  <div className="mb-2 cursor-pointer hover:underline">
-                    <p>Settings</p>
+              <div className="absolute right-2 top-[100%]">
+                <div className="bg-white shadow-xl w-48 rounded-md py-1 px-2">
+                  <div className="mb-2">
+                    <p>hi, user</p>
                   </div>
+                  <hr className="mb-2" />
                   <div onClick={() => doLogout()} className="mb-2 cursor-pointer hover:underline">
                     <p>Logout</p>
                   </div>

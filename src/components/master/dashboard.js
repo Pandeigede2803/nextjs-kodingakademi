@@ -2,21 +2,8 @@ import React, { useEffect } from "react";
 import Navbar from "../layouts/navbar";
 import Sidebar from "../layouts/sidebar";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
 
 const Dashboard = ({ children }) => {
-  const route = useRouter();
-  const currentRoute = route.pathname;
-
-  useEffect(() => {
-    // let userToken = localStorage.getItem("token") || token;
-    // if (!userToken) {
-    //   route.push("/login");
-    //   toast.error("Please login first");
-    //   return;
-    // }
-  }, [currentRoute]);
-
   return (
     <>
       <div className="w-screen h-screen flex">
