@@ -2,11 +2,17 @@ import React, { useState } from "react";
 // import CircularProgress from "@mui/material/CircularProgress";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 const Login = () => {
   const route = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
+
+  const {data}= useSession();
+  console.log(data);
+  
 
   return (
     <>
@@ -20,9 +26,9 @@ const Login = () => {
           <p className="text-bg-primary font-medium text-4xl">Sign In</p>
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              setDisabled(true);
-              route.push("/");
+              // e.preventDefault();
+              // setDisabled(true);
+              // route.push("/");
             }}
             className="flex flex-col items-center w-full pb-3"
           >
@@ -33,7 +39,7 @@ const Login = () => {
                 className="w-full outline-bg-primary border-bg-primary border rounded-md py-2 px-2"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                
               />
             </div>
             <div className="mt-5 w-full">
@@ -43,7 +49,7 @@ const Login = () => {
                 className="w-full outline-bg-primary border-bg-primary border rounded-md py-2 px-2"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                
               />
             </div>
             <div className="mt-5 w-full flex justify-end"></div>
@@ -55,6 +61,7 @@ const Login = () => {
               Sign In
             </button>
             <button
+            onClick={() => signIn()}
               type="submit"
               className={"bg-[#4285f4] py-2 rounded-md text-white w-full flex justify-center items-center mt-5 " + (!disabled && "hover:opacity-80")}
               disabled={disabled}

@@ -4,10 +4,13 @@ import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Auth from "../components/master/auth";
+import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps }) {
+
+function MyApp({ Component, pageProps:{ session, ...pageProps } }) {
   const route = useRouter();
   const currentRoute = route.pathname;
+  console.log(currentRoute);
 
   let authRoute = ["/login", "/register"];
 
@@ -23,15 +26,16 @@ function MyApp({ Component, pageProps }) {
         <Dashboard>
           <Component {...pageProps} />
         </Dashboard>
+    
       );
     }
   };
 
   return (
-    <div>
+    <SessionProvider session= {session}>
       <ToastContainer />
       {masterLayout()}
-    </div>
+      </SessionProvider>
   );
 }
 
